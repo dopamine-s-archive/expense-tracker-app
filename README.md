@@ -1,2 +1,2 @@
 # react-training-code-01
-# Личный учебный проект по курсу лекций Реакт.
+# Personal training project based on the React lecture course.
