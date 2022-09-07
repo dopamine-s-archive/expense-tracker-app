@@ -1,10 +1,11 @@
 import ExpenseItem from './ExpenseItem';
-import { expenses } from '../user-data';
+import { expenses } from '../../user-data';
+import Card from '../UI/Card';
 import './Expenses.css';
 
 function Expenses() {
   return (
-    <div className='expenses'>
+    <Card className='expenses'>
     {
       expenses.map((expense) => (
         <ExpenseItem
@@ -15,7 +16,7 @@ function Expenses() {
       )
       )
     }
-    </div>
+    </Card>
   );
 }
 
