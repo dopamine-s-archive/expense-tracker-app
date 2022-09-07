@@ -3,7 +3,7 @@ import { expenses } from '../../user-data';
 import Card from '../UI/Card';
 import './Expenses.css';
 
-function Expenses() {
+export default function Expenses() {
   return (
     <Card className='expenses'>
     {
@@ -19,5 +19,3 @@ function Expenses() {
     </Card>
   );
 }
-
-export default Expenses;
