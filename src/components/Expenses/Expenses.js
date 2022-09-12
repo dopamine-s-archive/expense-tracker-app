@@ -12,6 +12,7 @@ export default function Expenses(props) {
   };
 
   console.log('in Expenses.js - yearValue', filteredYear);
+  console.log('in Expenses.js - props', props)
 
   return (
     <div>
@@ -21,7 +22,7 @@ export default function Expenses(props) {
           onChangeYearFilter={yearFilterChangeHandler}
         />
         {
-          props.expenses.map((expense) => (
+          props.expenses.filter((expense) => expense.date.getFullYear().toString() === filteredYear).map((expense) => (
             <ExpenseItem
               key={expense.id}
               title={expense.title}
