@@ -5,7 +5,7 @@ import Card from '../UI/Card';
 import './Expenses.css';
 
 export default function Expenses(props) {
-  const [filteredYear, setFilteredYear] = useState('2022');
+  const [filteredYear, setFilteredYear] = useState('ALL');
 
   const yearFilterChangeHandler = selectedYearValue => {
     setFilteredYear(selectedYearValue);
@@ -14,6 +14,22 @@ export default function Expenses(props) {
   console.log('in Expenses.js - yearValue', filteredYear);
   console.log('in Expenses.js - props', props)
 
+  const filteredExpenses = filteredYear !== 'ALL' ?
+  props.expenses.filter((expense) => expense.date.getFullYear().toString() === filteredYear) : props.expenses;
+
+  let expensesContent = <p>No expenses found.</p>
+
+  if (filteredExpenses.length > 0) {
+    expensesContent = filteredExpenses.map((expense) => (
+      <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      />
+    ))
+  }
+
   return (
     <div>
       <Card className="expenses">
@@ -21,16 +37,7 @@ export default function Expenses(props) {
           selected={filteredYear}
           onChangeYearFilter={yearFilterChangeHandler}
         />
-        {
-          props.expenses.filter((expense) => expense.date.getFullYear().toString() === filteredYear).map((expense) => (
-            <ExpenseItem
-              key={expense.id}
-              title={expense.title}
-              amount={expense.amount}
-              date={expense.date}
-            />
-          ))
-        }
+        {expensesContent}
       </Card>
     </div>
   );
