@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 import './ExpenseForm.css';
 
 export default function ExpenseForm(props) {
@@ -22,17 +21,19 @@ export default function ExpenseForm(props) {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    const expenseData = {
-      title: enteredTitle,
-      amount: parseInt(enteredAmount),
-      date: new Date(enteredDate)
-    }
+    if (enteredTitle && enteredAmount) {
+      const expenseData = {
+        title: enteredTitle,
+        amount: enteredAmount,
+        date: enteredDate ? new Date(enteredDate) : new Date()
+      }
 
-    props.onSaveExpenseData(expenseData);
-    console.log('in ExpenseForm.js - expenseData',expenseData);
-    setEnteredTitle('');
-    setEnteredAmount('');
-    setEnteredDate('');
+      props.onSaveExpenseData(expenseData);
+      console.log('in ExpenseForm.js - expenseData', expenseData);
+      setEnteredTitle('');
+      setEnteredAmount('');
+      setEnteredDate('');
+    }
   };
 
   return <form onSubmit={submitHandler}>
@@ -71,7 +72,17 @@ export default function ExpenseForm(props) {
       </div>
     </div>
     <div className="new-expense__actions">
-      <button type="submit">Add Expense</button>
+      <button
+        type="button"
+        onClick={props.onCancelAddingExpense}
+      >
+        Cancel
+      </button>
+      <button
+        type="submit"
+      >
+        Add Expense
+      </button>
     </div>
   </form>
 };
