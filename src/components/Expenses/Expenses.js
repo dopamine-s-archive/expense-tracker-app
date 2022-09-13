@@ -12,9 +12,6 @@ export default function Expenses(props) {
     setFilteredYear(selectedYearValue);
   };
 
-  console.log('in Expenses.js - yearValue', filteredYear);
-  console.log('in Expenses.js - props', props)
-
   const filteredExpenses = filteredYear !== 'ALL' ?
   props.expenses.filter((expense) => expense.date.getFullYear().toString() === filteredYear) : props.expenses;
 

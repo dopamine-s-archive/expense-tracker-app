@@ -10,7 +10,6 @@ export default function NewExpense(props) {
       ...enteredExpenseData,
       id: Math.random().toString()
     };
-    console.log('in NewExpense.js - expenseData',expenseData);
     props.onAddExpense(expenseData);
   };
 
