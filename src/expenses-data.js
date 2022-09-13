@@ -18,7 +18,7 @@ export const MOCK_EXPENSES = [
   },
   {
     id: 'e4',
-    title: 'New PC Monitor}',
+    title: 'New PC Monitor',
     amount: 550,
     date: new Date(2022, 0, 17),
   },
