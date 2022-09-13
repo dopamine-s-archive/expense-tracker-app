@@ -10,14 +10,14 @@ export default function ExpensesList(props) {
   return (
     <ul className="expenses-list">
       {
-        props.filteredExpenses.map((expense) => (
+        props.filteredExpenses.map(expense =>
           <ExpenseItem
             key={expense.id}
             title={expense.title}
             amount={expense.amount}
             date={expense.date}
           />
-        ))
+        )
       }
     </ul>
   );

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
-import { MOCK_EXPENSES } from './user-data';
+import { MOCK_EXPENSES } from './expenses-data';
 
 export default function App() {
   const [expenses, setExpenses] = useState(MOCK_EXPENSES);
